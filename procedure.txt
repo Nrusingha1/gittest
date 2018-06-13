@@ -1,0 +1,26 @@
+CREATE PROCEDURE 'EmployeeAddOrEdit'(
+
+    IN _EmpID INT,
+    IN _Name VARCHAR(100),
+    IN _EmpCode VARCHAR(100),
+    IN _Salary INT
+     
+)
+
+BEGIN
+	
+    IF _Empid = 0
+    	
+        INSERT INTO employee (Name,EmpCode,Salary) VALUES (_Name,_EmpCode,_Salary);
+        
+        SET _EmpID = LAST_INSERT_ID();
+    
+    ELSE
+    
+        UPDATE employee SET Name =_Name, EmpCode =_EmpCode, Salary=_Salary WHERE EmpID=_EmpID;
+    
+    END IF;
+    
+    	SELECT _EmpID as 'EmpID';
+
+END
